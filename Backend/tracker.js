@@ -7,7 +7,7 @@ if (!sessionId) {
 
 // ---- helper: send one event to the backend ----
 function sendEvent(eventData) {
-  fetch("http://localhost:5000/api/events", {
+  fetch(`https://clickstream-analytics.onrender.com/api/events`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(eventData)

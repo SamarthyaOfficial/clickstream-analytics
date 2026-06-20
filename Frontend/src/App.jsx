@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
+const API = "https://clickstream-analytics.onrender.com";
 const REF_W = 1440, REF_H = 900;
 
 function App() {
@@ -13,16 +14,16 @@ function App() {
   const [view, setView] = useState("overview");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/sessions").then(r => r.json()).then(setSessions).catch(console.log);
+    fetch(`https://clickstream-analytics.onrender.com/api/sessions`).then(r => r.json()).then(setSessions).catch(console.log);
   }, []);
 
   function handleSessionClick(id) {
     setSelectedSession(id);
-    fetch(`http://localhost:5000/api/sessions/${id}/events`)
+    fetch(`https://clickstream-analytics.onrender.com/api/sessions/${id}/events`)
       .then(r => r.json()).then(d => { setEvents(d); setAllEvents(d); }).catch(console.log);
   }
   function loadHeatmap() {
-    fetch(`http://localhost:5000/api/clicks?page_url=${pageUrl}`).then(r => r.json()).then(setClicks).catch(console.log);
+    fetch(`https://clickstream-analytics.onrender.com/api/clicks?page_url=${pageUrl}`).then(r => r.json()).then(setClicks).catch(console.log);
   }
 
   const totalEvents = sessions.reduce((s, x) => s + x.eventCount, 0);
