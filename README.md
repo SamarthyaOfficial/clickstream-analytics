@@ -1,6 +1,6 @@
 # ClickStream Analytics
 
-A full-stack user analytics application that tracks user interactions (page views and clicks) on a webpage and visualizes them in a dashboard — including per-session user journeys and a click heatmap.
+A full-stack user analytics application that tracks user interactions (page views and clicks) on a webpage and visualizes them in a dashboard, including per-session user journeys and a click heatmap.
 
 ## Screenshots
 
