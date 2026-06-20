@@ -39,7 +39,7 @@ Events are the single unit of data. Every user action (a page view or a click) i
 | GET | `/api/sessions/:id/events` | Get all events for one session, ordered by time (the user journey) |
 | GET | `/api/clicks?page_url=<url>` | Get all click events for a page (used by the heatmap) |
 
-## Event Data Model
+## Event Data-Model
 
 ```js
 {
@@ -47,8 +47,8 @@ Events are the single unit of data. Every user action (a page view or a click) i
   event_type: String,   // "page_view" or "click"
   page_url:   String,
   timestamp:  Date,      // auto-set on creation
-  x: Number,             // click X coordinate (clicks only)
-  y: Number              // click Y coordinate (clicks only)
+  x: Number,             // click X coordinate 
+  y: Number              // click Y coordinate 
 }
 ```
 
