@@ -35,7 +35,7 @@ Tracking script (browser)  ──POST events──►  Express API  ──►  M
 React dashboard  ──GET sessions / events / clicks─┘
 ```
 
-Events are the single unit of data. Every user action (a page view or a click) is stored as one document in an `events` collection, tagged with a `session_id` that groups all actions from one visit. Sessions are not stored separately — they are derived on the fly using a MongoDB aggregation that groups events by `session_id`.
+Events are the single unit of data. Every user action (a page view or a click) is stored as one document in an events collection, tagged with a "session_id" that groups all actions from one visit. Sessions are not stored separately, they are derived using a MongoDB aggregation that groups events by "session_id".
 
 ## API Endpoints
 
