@@ -61,7 +61,7 @@ Events are the single unit of data. Every user action (a page view or a click) i
 
 ## Features
 
-- **Event tracking:** a vanilla-JS script captures page views and clicks (with x/y coordinates), assigns a persistent `session_id` via `localStorage`, and sends events to the API.
+- **Event tracking:** a vanilla-JS script captures page views and clicks (with x/y coordinates), assigns a persistent "session_id" via "localStorage", and sends events to the API.
 - **Sessions view:** lists every session with its event count, selecting a session shows its ordered event journey.
 - **Heatmap view:** enter a page URL to plot every click on that page as positioned dots.
 
@@ -82,14 +82,13 @@ cd clickstream-analytics
 cd Backend
 npm install
 ```
-Create a `.env` file in `Backend/` with your MongoDB connection string:
+Create a .env file in "Backend/" with your MongoDB connection string:
 ```
 MONGO_URI=your_mongodb_atlas_connection_string
 ```
 Start the server:
 ```bash
-npm run dev      
-# or
+
 node server.js  
 ```
 The API runs on `http://localhost:5000`.
@@ -105,16 +104,16 @@ The dashboard runs on `http://localhost:5173`.
 > The frontend reads the backend URL from an "API" constant at the top of "src/App.jsx". It is set to the deployed Render URL for production; change it to `http://localhost:5000` to run fully locally.
 
 ### 4. Generate test data
-Open `Backend/demo.html` in a browser and click around. Each load and click sends an event to the API, which then appears in the dashboard.
+Open "Backend/demo.html" in a browser and click around. Each load and click sends an event to the API, which then appears in the dashboard.
 
 ## Assumptions & Trade-offs
 
 - **Sessions are derived, not stored.** Rather than maintaining a separate sessions collection, sessions are computed from events via aggregation. This keeps a single source of truth and avoids data getting out of sync, at the cost of running an aggregation on each sessions request.
-- **Heatmap coordinate scaling.** Click coordinates are stored as raw pixel values from the visitor's screen and rendered on the dashboard as a percentage of a reference resolution (1440×900). This keeps dots inside the canvas across screen sizes, but is approximate. A production version would store the viewport dimensions alongside each click and scale accurately.
+- **Heatmap coordinate scaling.** Click coordinates are stored as raw pixel values from the visitor's screen and rendered on the dashboard as a percentage of a reference resolution (1440×900). I hit this because clicks recorded on the demo page were rendering outside the dashboard canvas, since the two have different dimensions. This keeps dots inside the canvas across screen sizes, but is approximate. A production version would store the viewport dimensions alongside each click and scale accurately.
 - **Open CORS.** The API currently accepts requests from any origin for ease of deployment and testing. In production this would be restricted to the known frontend domain.
-- **Open database network access.** MongoDB Atlas is set to allow connections from any IP (`0.0.0.0/0`) so the deployed backend and local development both connect easily. Production would restrict this to known server IPs.
+- **Open database network access.** MongoDB Atlas is set to allow connections from any IP (`0.0.0.0/0`) so the deployed backend and local development both connect easily. This should be restricted in production to known server IPs.
 - **No authentication.** The assignment scope is tracking and visualization; there is no auth on the API. A production analytics service would add API keys / auth and rate limiting on the events endpoint.
-- **Free-tier cold starts.** The backend sleeps on Render's free tier, so the first request after inactivity is slow.
+- **Free-tier cold starts.** The backend sleeps on Render's free tier, so the first request after inactivity takes time to load.
 
 ## Possible Future Improvements
 
