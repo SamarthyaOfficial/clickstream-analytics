@@ -4,6 +4,13 @@ A full-stack user analytics application that tracks user interactions (page view
 
 Built as part of the Full Stack Engineer hiring assignment for CausalFunnel.
 
+## Screenshots
+
+![App Dashboard](image.png)
+![Session Journey](image-1.png)
+![Sessions List](image-2.png)
+![Heatmap](image-3.png)
+
 ## Live Demo
 
 - **Dashboard (frontend):** <https://clickstream-analytics-pi.vercel.app/>
