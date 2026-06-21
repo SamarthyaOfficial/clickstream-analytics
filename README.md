@@ -102,7 +102,7 @@ The dashboard runs on `http://localhost:5173`.
 > The frontend reads the backend URL from an "API" constant at the top of "src/App.jsx". It is set to the deployed Render URL for production; change it to `http://localhost:5000` to run fully locally.
 
 ### 4. Generate test data
-Open "Backend/demo.html" in a browser and click around. Each load and click sends an event to the API, which then appears in the dashboard.
+Open "Backend/demo.html" with live server and click around. Each load and click sends an event to the API, which then appears in the dashboard.(Type /Backend/demo.html in the heatmap box and click load to see the upated heatmap, also the frontend and backend should both be running).
 
 ## Assumptions & Trade-offs
 
